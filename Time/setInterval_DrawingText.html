@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <button onclick="Start()">Start</button>
+    <button onclick="Stop()">Stop</button>
+    <canvas id="myCanvas" width="1024" height="768" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+
+    <script>
+        const colors = ["green", "blue", "red", "orange"];
+        const poem = ["春花秋月何時了", "往事知多少", "小樓昨夜又東風", "故國不堪回首月明中"];
+
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = colors[getRandom(0, 4)];
+        ctx.fill();
+        ctx.font = "30px Arial";
+        ctx.fillText(poem[getRandom(0, 4)], 500, 200);
+
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        //Ex - setInterval()呼叫不帶參數
+        function textRotate() {
+            let x = getRandom(100, 700);
+            let y = getRandom(200, 600);
+            let angle = getRandom(1, 360)
+            ctx.rotate(angle);
+            ctx.fillStyle = colors[getRandom(0, 4)];
+            ctx.fillText(poem[getRandom(0, 4)], x, y);
+        }
+
+        // setInterval(textRotate, 200);
+
+        //Ex - setInterval()呼叫帶參數
+        function txtRotate(color, poem) {
+            let x = getRandom(100, 700);
+            let y = getRandom(200, 600);
+            let angle = getRandom(1, 360)
+            ctx.rotate(angle);
+            ctx.fillStyle = color;
+            ctx.fillText(poem, x, y);
+        }
+
+        // setInterval(txtRotate, 200, colors[1], poem[2]);
+
+        //Ex - 如果要停止setInterval()方法，需要設定Id
+        let intervalId;
+
+        function Start(){
+            // alert('Start');
+            intervalId = setInterval(textRotate, 200);
+        }
+
+        function Stop(){
+            // alert('Stop');
+            clearInterval(intervalId);
+        }
+    </script>
+</body>
+
+</html>

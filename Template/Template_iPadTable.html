@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <h1>Apple iPad</h1>
+    <div id="msg"></div>
+
+
+    <script>
+
+        let body = document.querySelector('body');
+        let table = document.createElement('table');
+        table.setAttribute("border", "2");
+
+        let thead = document.createElement('thead');
+        let tbody = document.createElement('tbody');
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        body.appendChild(table);
+
+
+        let ipad = '';
+        window.onload = function () {
+            let xhr = new XMLHttpRequest;
+            xhr.onload = function () {
+                // document.getElementById("msg").innerHTML=this.responseText;
+                ipad = JSON.parse(this.responseText);
+                debugger;
+            }
+            xhr.open("GET", "http://127.0.0.1:5501/Examples/Apple/iPad.json");
+            xhr.send();
+
+/*             const titlesArray = Object.keys(ipad[0]);
+            //建立thead
+            addThead(titlesArray);
+
+            //迭代陣列, 每個Item是一個Object, 再用.values()取值,回傳陣列
+            ipad.forEach((item) => {
+                addTbody(Object.values(item))
+            }); */
+        }
+
+        //Create Thead, ["sku", "price" ,"storage", "description"]
+        function addThead(titlesArray) {
+            let _tr = document.createElement('tr');
+            thead.appendChild(_tr);
+            titlesArray.forEach((item) => {
+                let _th = document.createElement('th');
+                _th.innerHTML = item;
+                _tr.appendChild(_th);
+            });
+        }
+
+        let o = {
+            "sku": "MW762",
+            "price": 10900,
+            "storage": "32GB",
+            "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 金色"
+        }
+        //Create Tbody  ["MW762", 10900, "32GB", "10.2 吋 iPad Wi-Fi 機型 32GB - 金色"]
+        function addTbody(rowArray) {
+            let _tr = document.createElement('tr');
+            tbody.append(_tr);
+
+            rowArray.forEach((item) => {
+                let _td = document.createElement('td');
+                _td.innerHTML = item;
+
+                // let _tdText = document.createTextNode(item);
+                // _td.appendChild(_tdText);
+                _tr.appendChild(_td);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

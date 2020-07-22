@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <h1>setTimeout() - 定時器</h1>
+    <button onclick="Start()">Start</button>
+    <button onclick="Stop()">Clear</button>
+
+    <script>
+        //陣列
+        const colors = ["green", "blue", "yellow", "red", "orange", "pink", "purple", "white", "black"];
+
+        //取得亂數
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        let timeoutId;
+
+        function Start(){
+            timeoutId = setTimeout(changeColor, 500);
+        }
+
+        function Stop(){
+            clearTimeout(timeoutId);
+            body.style.backgroundColor="white";
+            alert("setTimeout已清除");
+        }
+
+        let body = document.querySelector("body");
+        function changeColor(){
+            body.style.backgroundColor=colors[getRandom(0, 8)];
+            console.log(Math.random());
+        }
+    </script>
+</body>
+
+</html>

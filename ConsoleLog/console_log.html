@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1><a
+            href="https://www.toutiao.com/a6764743819167531524/?tt_from=weixin&utm_campaign=client_share&wxshare_count=1&timestamp=1581353362&app=news_article&utm_source=weixin&utm_medium=toutiao_android&req_id=202002110049210100140470200F8A5870&group_id=6764743819167531524">Console.log()方法應用</a>
+    </h1>
+
+    <script>
+        //Ex:傳入一個變數
+        var username = "Kevin";
+        console.log(username);
+
+        //Ex:傳入一個Object
+        let person = { name: "kevin", age: 30 };
+        console.log(person);
+
+        //Ex:傳遞多個參數
+        console.log(username, person);
+
+        //Ex:格式化的應用
+        //format - %s, %d, %i, %f, %o, %c
+        let name = "Kevin"; //string
+        let age = 35;   //number
+        let weight = 75.5; //number
+        let PhoneNo = { Home: "362-5581", Mobile: "0925-352212" }   //object
+        let css = "background-color:red;color:white";
+        let cssRed = "background-color:red;color:white";
+        let cssBlue = "background-color:blue;color:white";
+
+
+        console.log("My name is %s", name);
+        console.log("I am %d years old", age);
+        console.log("I am %i years old", age);
+        console.log("%s is %d years old ", name, age);
+        console.log("%c%s%c is %c%d%c years old ", cssRed, name, "", cssBlue, age, "");
+        console.log("My weight is %f", weight);
+        console.log("My Phone Number is %o", PhoneNo);
+        console.log("My Phone Number is " + PhoneNo);
+        console.log("My name is %c%s", "background:red;color:white", name);
+        console.log("My name is %c%s", "background-color:blue;color:white", name);
+
+        //Ex:console.warn()
+        console.warn("Exception例外錯誤！");
+
+        //Ex:console.dir()顯示屬性
+        console.log(document.body);
+        console.dir(document.body);
+
+        console.log(document.head);
+        console.dir(document.head);
+
+        //Ex:console.table()
+        let employees = [
+            { id: 1, name: "Kevin", title: "Manager" },
+            { id: 2, name: "David", title: "RD Engineer" },
+            { id: 3, name: "Mary", title: "Sales" }
+        ];
+
+        console.log(employees);
+        console.table(employees);
+
+
+        //Ex:console.assert, false情況下才會顯示
+        console.assert(person.age < 35, "年紀小於35歲")
+        console.assert(person.age > 35, "年紀大於35歲")
+
+        //Ex: console.trace()
+        function foo(data) {
+            if (data === null) {
+                console.trace();
+                return [];
+            }
+            return [data.a, data.b];
+        }
+
+        function bar1(data) {
+            console.trace();
+            return foo(data);
+        }
+
+        function bar2(data) {
+            return foo(data);
+        }
+
+        bar1({ a: 1, b: 2 }); // -> [1, 2]
+        bar2(null); // -> []
+
+        //Ex:console.count 計數
+        var scores = [72, 64, 59, 82, 43, 99];
+        scores.forEach(function (item, index, array) {
+            if (item >= 60) {
+                console.count("成績大於等於60分");
+            }
+        });
+
+        for (let i = 0; i <= 38; i++) {
+            if (!(i % 2)) {
+                console.count('even');
+            } else {
+                console.count('odd');
+            }
+        }
+
+        //performance.now()
+        const startTime = performance.now();
+        let count = 0;
+        for (let i = 0; i < 100000; i++) {
+            count += i;
+        }
+        const diffTime = performance.now() - startTime;
+        console.log(`Execution time: ${diffTime}`);
+
+        //Ex:console.time()
+        console.log(performance.now());
+        console.time("Calc");
+
+        let sum = 18592;
+        for (let i = 0; i < 10000000; i++) {
+            sum += sum * i;
+        }
+
+        console.timeEnd("Calc");
+
+        console.log(performance.now());
+
+
+        //Ex : document.body.contentEditable = true;
+    </script>
+</body>
+
+</html>

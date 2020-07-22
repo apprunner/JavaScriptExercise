@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="producttable">
+        <thead>
+            <tr>
+                <td>UPC_Code</td>
+                <td>Product_Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 在這裡可以選擇性地包括既有資料 -->
+        </tbody>
+    </table>
+
+    <template id="productrow">
+        <tr>
+            <td class="record"></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <script>
+        // 透過檢查 HTML template 元素屬性的存在與否，以測試瀏覽器是否支援它
+        if ('content' in document.createElement('template')) {
+
+            // 使用現有 HTML tbody、行以及模板，來實例化表格
+            var t = document.querySelector('#productrow'),
+                td = t.content.querySelectorAll("td");
+            td[0].textContent = "1235646565";
+            td[1].textContent = "Stuff";
+
+            // 複製新的行並將其插至表格
+            var tb = document.querySelector("tbody");
+            var clone = document.importNode(t.content, true);
+            tb.appendChild(clone);
+
+            // 複製新的行
+            td[0].textContent = "0384928528";
+            td[1].textContent = "Acme Kidney Beans";
+
+            // 複製新的行並將其插至表格
+            var clone2 = document.importNode(t.content, true);
+            tb.appendChild(clone2);
+
+        } else {
+            // 因為 HTML template 不被支援，所以要用其他方法在表格增加新行
+        }
+    </script>
+
+
+</body>
+
+</html>

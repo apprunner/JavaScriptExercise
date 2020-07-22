@@ -1,0 +1,17 @@
+# Top 14 Templating Engines for JavaScript To Improve and Simplify Your Workflow 2019
+  https://colorlib.com/wp/top-templating-engines-for-javascript/
+
+# MDN - HTML <template>
+  https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/template
+
+# MDN - Using templates and slots
+  https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots
+
+# MDN - Template literals (Template strings)
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+
+# [筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）
+  https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html
+
+# W3School - HTML <template> Tag
+  https://www.w3schools.com/tags/tag_template.asp
