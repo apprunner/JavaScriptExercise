@@ -70,6 +70,8 @@ console.log(Man);
 var person = new Man('Mary', 26, 168);
 console.log(person);    //顯示person物件
 console.log(person.constructor.name);   //顯示person的constructor名稱
+
+
 console.log(typeof person); //顯示Person型別
 console.log(person instanceof Man);  //顯示person是否為Person實例
 
