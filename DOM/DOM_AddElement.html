@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>寶可夢圖鑑列列表</h1>
+    <button onclick='AddElement()'>加入寶可夢圖片元素</button>
+    <div id='container'></div>
+
+    <script>
+        function AddElement() {
+            //1.創建與設定HTML元素
+            let img = document.createElement('img');
+            let filename = $GetRandom(1, 809).toString().padStart(3, '0');
+            console.log(filename);
+            let filepath = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png`;
+
+            img.src = filepath;
+
+
+            let array1 = ["src", "alt"];
+            let array2 = ["http://...", "pokemon"];
+
+            var pokemon = {
+                src: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png",
+                alt: "Pokemn"
+            }
+
+            function setAttr(obj) {
+                for (let prop in obj) {
+                    img.setAttribute(prop, pokemon[prop]);
+                }
+            }
+
+
+
+
+            // //2.選取HTML元素
+            // let container = document.getElementById("container");
+            // container.appendChild(img);
+            // //3.加入元素旗下
+            // let div = document.querySelector("body div");
+            // div.appendChild(img);
+
+            AppendChildElement("body div", img);
+        }
+        //4.如果HTML畫⾯面要加入第二張圖應該如做？
+
+        function $GetRandom(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        function AppendChildElement(selectorString, childElement) {
+            let parentElement = document.querySelector(selectorString);
+            parentElement.appendChild(childElement);
+        }
+
+        for (let i = 0; i < 100; i++) {
+            console.log($GetRandom(1, 10));
+        }
+
+    </script>
+</body>
+
+</html>

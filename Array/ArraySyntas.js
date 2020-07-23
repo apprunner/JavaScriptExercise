@@ -126,11 +126,12 @@ Fruits.forEach(function(item, index, array){
 
 //Ex14 - Function委派
 title('Function委派');
-Fruits.forEach(Iteration);
-
 function Iteration(item, index, array){
     console.log(index,  item)
 }
+
+Fruits.forEach(Iteration);
+
 
 var AllCars = "";
 Cars.forEach(displayItems);
@@ -228,4 +229,5 @@ friends.splice(0, friends.length);  //移除N個陣列元素
 //Ex25 - 用join()陣列元素合併成一字串
 const fruits = ["Apple", "Banana" , "Cherry"];
 
-console.log
+var array1 = [...Array(9).keys()].map(x => (x + 1) * 10);
+console.log(array1);

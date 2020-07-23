@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <h1></h1>
     <table>
         <thead>
             <tr>
@@ -39,10 +40,32 @@
                 <td></td>
                 <td></td>
             </tr>
+            <tr>
+                <td>全球統計</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         </tbody>
     </table>
+
+    <ul>
+        <li>JS</li>
+        <li>CSS</li>
+        <li>HTML</li>
+    </ul>
     <script>
         //建立Virus資料，傳入Table中
+        //全球肺炎統計表
+        var Taiwan = [100,200,300];
+        var American = [300,600,900];
+        let China = [500,800,300];
+
+        let title = document.querySelector("h1");
+        title.innerText = "全球肺炎統計表";
+
+        let languages = document.querySelectorAll("ul li");
+        console.log(languages);
 
     </script>
 </body>

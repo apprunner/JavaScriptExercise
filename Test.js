@@ -1,28 +1,56 @@
-var name = 'Jane';  //單引號single quote
-var name = "Jane";  //雙引號dobule quotes
 
-a = b = 3, c = 4; // Returns 4 in console
-console.log(a); // 3 (left-most)
 
-x = (y = 5, z = 6); // Returns 6 in console
-console.log(x); // 6 (right-most)
-
-console.log(String.fromCharCode(65));
-
-var ascii='';
-for (let i = 0; i < 65563; i++) {
-    // ascii+=String.fromCharCode(i);
-    // console.log(String.fromCharCode(i));
-    if(String.fromCharCode(i)=='奚'){
-        console.log(i + ":" + String.fromCharCode(i));
-    }
+var person1 = {
+    name: "Kevin",
+    gender: true,
+    Phone: {
+        Home: "03-3664946",
+        Office: "02-2587693",
+        Mobile: "0925-155286",
+    },
+    CWH : [36, 24, 36],
+    Friends : ["Mary", "Rose", "Cindy"]
+}
+var person2 = {
+    name: "David",
+    gender: true,
+    Phone: {
+        Home: "03-3664946",
+        Office: "02-2587693",
+        Mobile: "0925-155286",
+    },
+    CWH : [36, 24, 36],
+    Friends : ["Mary", "Rose", "Cindy"]
+}
+var person3 = {
+    name: "Mary",
+    gender: true,
+    Phone: {
+        Home: "03-3664946",
+        Office: "02-2587693",
+        Mobile: "0925-155286",
+    },
+    CWH : [36, 24, 36],
+    Friends : ["Mary", "Rose", "Cindy"]
 }
 
-console.log(ascii);
+var people = {
+    Person1 : person1,
+    Person2 : person2,
+    Person3 : person3
+};
 
-let array1 = [100 , 200 , 300, 400, 500]
-let sum = array1.map(x => x *1.05)
-    .reduce((total, current) => total + current);
 
-console.log(sum);
+
+// console.log(JSON.stringify(people));
+
+var Members = [person1, person2, person3];
+
+console.log(JSON.stringify(Members));
+
+
+// console.log(person);
+// console.log(person.Phone);
+// console.log(person.Phone.Mobile);
+// console.log(person.Friends[2]);
 

@@ -14,7 +14,7 @@ for (let x = 1; x <= 9; x++) {
 }
 
 $ex('spread operator');
-const arrayBase = [...Array(9).keys()].map(x => x + 1);
+const arrayBase = [...Array(9).keys()].map(x => x + 2);
 console.log(arrayBase);
 
 const line1 = arrayBase.map(x => x * 1);
@@ -34,6 +34,5 @@ finalArray.forEach((item, index)=>{
     console.log(item.join(', '));
 });
 
-setInterval(() => {
-    
-}, interval);
+console.log(finalArray);
+
