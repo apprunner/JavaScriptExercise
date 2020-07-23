@@ -39,7 +39,7 @@ function $log(value){
 }
 
 
-function$andom(min, max) {
+function $getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
