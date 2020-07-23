@@ -9,7 +9,6 @@
         td {
             border: 1px solid black;
         }
-
     </style>
 </head>
 
@@ -46,7 +45,43 @@
     </table>
 
     <script>
-    
+
+        //querySelector("#id選擇器")選擇器，回傳⼀一個Emlement
+        var title = document.querySelector("#title");
+        title.innerHTML = "<h1>通訊錄</h1>";
+        //querySelector(".class類別選擇器")選擇器，回傳⼀一個Emlement
+        var subtitle = document.querySelector(".bg-info");
+        subtitle.innerHTML = "<h3>第七⼩小組</h3>";
+        subtitle.setAttribute("style", "background-color:red")
+        //設定Thead背景⾊色
+        //1.querySelector()選擇器，回傳⼀一個Emlement
+        var thead = document.querySelector("table>thead>tr");
+        thead.style.color = "blue";
+        thead.style.backgroundColor = 'yellow';
+        document.write(thead.getAttribute("style") + "<br>");
+        //2.querySelectorAll()選擇器,回傳NodeList-選擇Tbody的所有<tr>列列
+        var trRows = document.querySelectorAll("table>tbody>tr");
+
+        //NodeList，三個<tr>
+        document.write("*_".repeat(30) + "<br>");
+        trRows.forEach(function (item, index, list) {
+            let tdCols = item.cells; //HTMlCollection
+            debugger;
+            document.write(`${tdCols[0].innerHTML},${tdCols[1].innerHTML}, ${tdCols[2].innerHTML}<br>`);
+            
+            for (var i = 0; i < tdCols.length; i++) {
+                document.write(`${tdCols[0].innerHTML}<br>`);
+                document.write(`${tdCols[1].innerHTML}<br>`);
+                document.write(`${tdCols[2].innerHTML}<br>`);
+            }
+        });
+        document.write("*_".repeat(30) + "<br>");
+        //3.querySelectorAll()選擇器,回傳NodeList-選擇Tbody的所有tr列之第二欄<td>
+        var names = document.querySelectorAll("table>tbody>tr>td:nth-child(2)"); //NodeList
+        names.forEach(function (item, index, list) {
+            document.write(`${item.innerHTML}<br>`); //item is 三個<td>
+        });
+
     </script>
 </body>
 

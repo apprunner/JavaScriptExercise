@@ -38,9 +38,4 @@ function $log(value){
     console.log(value);
 }
 
-
-function $GetRandom(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-}
-
-export { displayName, $title, $ex, $g, $log, $random };
+export { displayName, $title, $ex, $g, $log };

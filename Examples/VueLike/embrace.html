@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>{{message}}</h1>{{ message  }}
+    <p>{{message}}</p>
+    <div id="app">Information :  This brace {{ message  }}</div>
+
+    <ul id="myList" v-for='todo in todos'>
+        {{ todo.text }}
+    </ul>
+
+    <ul id="myList2" v-for='todo in todos'>
+        {{ todo.level }}
+    </ul>
+
+    <script>
+
+        // const regPattern = /{{\s*message\s*}}/;
+
+        /*         let keyname = 'message';
+                let embrace = `{{}}`;
+                let pattern = embrace.substring(0, 2) + '\\s*' + keyname + '\\s*' + embrace.substring(2, 4);
+         */
+
+        const PatternConfig = {
+            pattern: '{{\\s*message\\s*}}'
+        }
+
+        // PatternConfig.pattern='{{\\s*message\\s*}}';
+        // const regPattern = new RegExp(PatternConfig.pattern);
+        const regPattern = /{{\s*message\s*}}/g;
+
+
+        function XiText(object) {
+            //1.找到指定元素，
+            if (object.selector == null || object.selector == undefined || object.selector == '') { return }
+
+            let element = document.querySelector(object.selector);
+
+            //2.replace()方法套用RegExp正規則表達式，置換成data.message資料
+            if (element == null) { return; }
+
+            element.innerHTML = element.textContent.replace(regPattern, object.data.message);
+        }
+
+        new XiText({ selector: "h1", data: { message: "聖殿祭司" } });
+
+        let object = { selector: "#app", data: { message: "奚江華" } };
+        var info = new XiText(object);
+
+
+        /*         let listData = {
+                    selector: "myList",
+                    todos: [
+                        { text: '1.querySelector()' },
+                        { text: '2.RegExp' },
+                        { text: '3.String.replace(Regex, "xxx")' }
+                    ]
+                };
+         */
+
+        // function XiUL
+
+        //取得element
+        /*         const ul = document.querySelector("#myList");
+                //取得v-for屬性值，拆解成陣列
+                const forText_Array = ul.getAttribute('v-for').split(' ');
+                const arrayName = forText_Array[forText_Array.length - 1];
+                const itemName = forText_Array[0];
+                let x = listData[arrayName][0].text;
+        
+                ul.innerHTML = '';
+                listData[arrayName].forEach((item, index) => {
+                    let li = document.createElement("li");
+                    li.textContent = item.text;
+                    ul.appendChild(li);
+                }); */
+
+        function XiUl(object) {
+            //1.找到指定元素，
+            if (object.selector == null || object.selector == undefined || object.selector == '') { return }
+
+            //取得element
+            const ul = document.querySelector(object.selector);
+            if (ul == null || ul == undefined) { return; }
+            // console.log(ul);
+
+
+            //取得v-for屬性值，拆解成陣列
+            const forText_Array = ul.getAttribute('v-for').split(' ');
+            const arrayName = forText_Array[forText_Array.length - 1];
+            const itemName = forText_Array[0];
+
+            let fullPropertyName = ul.innerHTML;
+            //找到itemName的property屬性名稱
+            //例如itemName是todo，依此找到todo.text的text就是屬性名稱
+            //1.將{{ todo.text }}的前後雙大括號取代成''
+            fullPropertyName = fullPropertyName.replace('{{', '').replace('}}', '').trim();
+
+            //2.取後todo.之後的屬性名稱
+            let propertyName = fullPropertyName.substring(fullPropertyName.indexOf('.') + 1, fullPropertyName.length);
+
+            //用item[屬性名稱]取值
+
+            ul.innerHTML = '';
+            object[arrayName].forEach((item, index) => {
+                let li = document.createElement("li");
+                li.textContent = item[propertyName];
+                // console.log(item.text);
+                ul.appendChild(li);
+            });
+        }
+
+        new XiUl({
+            selector: "#myList",
+            todos: [
+                { text: 'HTML', level: '100' },
+                { text: 'CSS', level: '200' },
+                { text: 'JavaScript', level: '300' }
+            ]
+        });
+
+        new XiUl({
+            selector: "#myList2",
+            todos: [
+                { text: 'HTML', level: '100' },
+                { text: 'CSS', level: '200' },
+                { text: 'JavaScript', level: '300' }
+            ]
+        });
+    </script>
+</body>
+
+</html>
